@@ -18,9 +18,13 @@ const useStyles = makeStyles((theme) => ({
 	  flex: '1 1 auto',
 	},
 	cover: {
-	  width: 320,
+		width: '800px',
+		height: '285px',
 	},
 	
+	price: {
+		textAlign: 'right'
+	}
 	
   }));
   
@@ -47,7 +51,7 @@ const CardDoctor = ({data}) => {
 					<p>
 						{HTMLReactParser(data.about)}
 					</p>
-					<p>
+					<p className={classes.price}>
 						{data.price.formatted}
 					</p>
 				</CardContent>
