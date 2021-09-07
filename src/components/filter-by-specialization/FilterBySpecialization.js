@@ -5,16 +5,19 @@ import TextField from '@material-ui/core/TextField'
 const FilterBySpecialization = (props) => {
     return (
         <TextField
-            id="filterByHostpital"
+            id="filterBySpecialization"
             select
+            name="specialization"
             variant="outlined"
             fullWidth
-            
-            value={''}
+            value={props.selectValue}
             onChange={props.handleFilterBySpecialization}
             
         >
-           
+            
+            <MenuItem value="">
+                <em>None</em>
+            </MenuItem>
             {
                 props.specialization && props.specialization.map( (item, index) => {
                     return (

@@ -10,12 +10,12 @@ const FilterByHospital = (props) => {
             variant="outlined"
             fullWidth
             
-            value={'bla'}
+            value={props.selectValue}
             onChange={props.handleFilterByHospital}
             
         >
-            <MenuItem value="">
-            <em>Filter By Hospital</em>
+             <MenuItem value="">
+                <em>None</em>
             </MenuItem>
             {
                 props.hospitals && props.hospitals.map( (item, index) => {
