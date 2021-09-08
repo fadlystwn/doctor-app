@@ -8,6 +8,7 @@ import Finder from '../../components/finder/Finder';
 import Grid from '@material-ui/core/Grid';
 import SearchDoctor from '../../components/search-doctor/SearchDoctor';
 import fetchDoctors from '../../api/fetch-doctors';
+import logger from '../../helper/logger';
 
 const Home = () => {
   const [keyword, setKeyword] = useState('');
@@ -42,15 +43,19 @@ const Home = () => {
     setSpecialization(specializations);
   };
 
+  const reloadDoctors = async () => {
+    const { isSuccess, data } = await fetchDoctors();
+    if (!isSuccess) {
+      logger(data);
+      return;
+    }
+
+    setInitialData(data);
+    setsearchResult(data);
+  };
+
   useEffect(() => {
-    fetchDoctors().then((response) => {
-      try {
-        setInitialData(response.data);
-        setsearchResult(response.data);
-      } catch (err) {
-        // console.log(err);
-      }
-    });
+    reloadDoctors();
   }, []);
 
   useEffect(() => {
