@@ -20,27 +20,13 @@ const Home = () => {
   const [specialization, setSpecialization] = useState([]);
 
   const getHospitals = (obj) => {
-    const _hospitals = [];
-
-    for (const key in obj) {
-      const { hospital } = obj[key];
-      _hospitals.push(hospital[0].name);
-    }
-    const hospitals = Array.from(new Set(_hospitals));
-
-    setHospitalLabel(hospitals);
+    // performa masih kurang, bisa diganti dengan checking object key method
+    setHospitalLabel([...new Set(obj.map((o) => o.hospital[0].name))]);
   };
 
   const getSpecialization = (obj) => {
-    const _specializations = [];
-
-    for (const key in obj) {
-      const { specialization: spec } = obj[key];
-      _specializations.push(spec['name']);
-    }
-    const specializations = Array.from(new Set(specializationName));
-
-    setSpecialization(specializations);
+    // performa masih kurang, bisa diganti dengan checking object key method
+    setSpecialization([...new Set(obj.map((o) => o.specialization.name))]);
   };
 
   const reloadDoctors = async () => {
